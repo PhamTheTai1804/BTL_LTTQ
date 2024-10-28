@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BTL_LTTQ\Client.csproj" />
+  </ItemGroup>
+
 </Project>

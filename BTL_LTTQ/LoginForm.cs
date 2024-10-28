@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,15 +42,27 @@ namespace Client
         {
             string username = UserName.Text;
             string password = Password.Text;
-            string sqlSelect = "SELECT RIGHT('000'+CAST([MaNguoiDung] AS VARCHAR(3)),3) FROM [dbo].[NguoiDung] WHERE [TenDangNhap] = @username AND [MatKhau] = @password";
+            string Result="";
+            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            try
+            {
+                client.Connect(IP);
+                string RequestLogin = "#Login" + username + "," + password;
+                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                client.Send(data);
+                byte[] dataReturn = new byte[1024 * 5000];
+                int bytesRead = client.Receive(dataReturn);
+                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            finally { client.Close(); };
 
-            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
-            command.Parameters.AddWithValue("@username", username);
-            command.Parameters.AddWithValue("@password", password);
-            DataTable dt = new DataTable();
-            SqlDataAdapter sqlData = new SqlDataAdapter(command);
-            sqlData.Fill(dt);
-            if (dt.Rows.Count>0)
+            if (Result!="NotFound")
             {
                 if (SaveLogin.Checked)
                 {
@@ -64,7 +78,7 @@ namespace Client
                     Properties.Settings.Default.IsRemembered = false;
                     Properties.Settings.Default.Save();
                 }
-                ClientIndex index = new ClientIndex(dt.Rows[0][0].ToString());
+                ClientIndex index = new ClientIndex(Result);
                 index.Show();
             }
             else

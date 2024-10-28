@@ -1,15 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using BTL_LTTQ.Classes;
+using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics.Eventing.Reader;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Server
 {
     public partial class Server : Form
     {
+        DataBaseProcess db=new DataBaseProcess();
         IPEndPoint IP;
         Socket server;
         Dictionary<string, Socket> clients;
@@ -78,17 +85,53 @@ namespace Server
                     byte[] data = new byte[1024 * 5000];
                     int bytesRead = client.Receive(data);
                     string message = Encoding.UTF8.GetString(data, 0, bytesRead);
-                    string IDSend = message.Substring(0, 3); 
-                    string IDReceive = message.Substring(message.Length - 3);  
-
-                    clients[IDSend] = client;
-                    NewMessage(message);
-
-                    if (clients.ContainsKey(IDReceive))
+                    //Request Login
+                    if(message.Substring(0,6)=="#Login")
                     {
-                        
-                        Send(clients[IDReceive], message.Substring(3, message.Length - 6));
+                        string[] info = message.Substring(6).Split(',');
+                        string result = CheckLogin(info[0], info[1]);
+                        if (result != "NotFound")
+                        {
+                            byte[] IDReturn = Encoding.UTF8.GetBytes(result);
+                            client.Send(IDReturn);
+                        }
+                        else{
+                            byte[] IDReturn = Encoding.UTF8.GetBytes(result);
+                            client.Send(IDReturn);
+                        }
                     }
+                    //Request Load Friends On Index Page
+                    else if (message.Substring(0,7) == "#LoadFr")
+                    {
+                        string result = LoadIndex(message.Substring(7,3));
+                        byte[] ListFrReturn = Encoding.UTF8.GetBytes(result);
+                        client.Send(ListFrReturn);
+                    }
+                    else if(message.Substring(3,9)=="#LoadHist")
+                    {
+                        string result = LoadHist(message.Substring(0,3),message.Substring(12));
+                        byte[] HistReturn = Encoding.UTF8.GetBytes(result);
+                        client.Send(HistReturn);
+                        NewMessage(result);
+                    }    
+                    else {
+                        string IDSend = message.Substring(0, 3);
+                        string IDReceive = message.Substring(message.Length - 3);
+                        clients[IDSend] = client;
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            NewMessage(message);
+
+                        });
+
+                        if (clients.ContainsKey(IDReceive))
+                        {
+
+                            Send(clients[IDReceive], message.Substring(3, message.Length - 6));
+                            SaveMessageToDb(IDSend,IDReceive, message.Substring(3, message.Length - 6));
+                        }
+                    }
+                  
                 }
             }
             catch
@@ -118,6 +161,68 @@ namespace Server
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+        public string CheckLogin(string username, string password)
+        {
+            string sqlSelect = "SELECT RIGHT('000'+CAST([MaNguoiDung] AS VARCHAR(3)),3) FROM [dbo].[NguoiDung] WHERE [TenDangNhap] = @username AND [MatKhau] = @password";
+
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            command.Parameters.AddWithValue("@username", username);
+            command.Parameters.AddWithValue("@password", password);
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                return dt.Rows[0][0].ToString();
+            }
+            else return "NotFound";
+        }
+        public string LoadIndex(string ID)
+        {
+            string sqlSelect = "select RIGHT('000'+CAST(f.[MaBanBe] AS VARCHAR(3)),3),u.[TenDangNhap]\r\nfrom [dbo].[BanBe] f\r\nINNER JOIN [dbo].[NguoiDung] u\r\nON f.MaBanBe=u.MaNguoiDung\r\nwhere f.[MaNguoiDung] = @IDUser";
+
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            command.Parameters.AddWithValue("@IDUser", ID);
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            string res = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                res += dr[0].ToString() + "," + dr[1].ToString() + ";";
+            }
+            return res;
+        }
+        public string LoadHist(string SenderID, string ReceiverID)
+        {
+            string sqlSelect = "SELECT [NoiDung],RIGHT('000' + CAST([MaNguoiGui] AS VARCHAR(3)), 3)\r\nFROM [dbo].[TinNhan]\r\nWHERE ([MaNguoiGui] = @IDSend AND [MaNguoiNhan]=@IDRec) \r\nOR ([MaNguoiNhan] =@IDSend AND [MaNguoiGui]=@IDRec)\r\nORDER BY [ThoiGian]";
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            command.Parameters.AddWithValue("@IDSend", SenderID);
+            command.Parameters.AddWithValue("@IDRec", ReceiverID);
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            string res = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                res += dr[0].ToString() + "," + dr[1].ToString() + ";";
+            }
+            return res;
+        }
+        public void SaveMessageToDb(string SenderID,string ReceiverID,string content)
+        {
+            string sqlInsert = "INSERT INTO [dbo].[TinNhan]([MaNguoiGui],[MaNguoiNhan],[NoiDung])\r\nVALUES (@Sid,@Rid,@ctn)";
+            using (SqlCommand command = new SqlCommand(sqlInsert, db.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@Sid", SenderID);
+                command.Parameters.AddWithValue("@Rid", ReceiverID);
+                command.Parameters.AddWithValue("@ctn", content);
+
+                db.OpenConnect();
+                int rowsAffected = command.ExecuteNonQuery();
+                db.CloseConnect();
+            }
         }
     }
 }

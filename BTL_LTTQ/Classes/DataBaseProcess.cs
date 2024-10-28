@@ -13,7 +13,7 @@ namespace BTL_LTTQ.Classes
         string strConnect = "Data Source=PHAMTHETAI\\SQLEXPRESS;Initial Catalog=QLUser;Integrated Security=True";
         SqlConnection sqlConnection = null;
 
-        void OpenConnect()
+        public void OpenConnect()
         {
             sqlConnection = new SqlConnection(strConnect);
             if (sqlConnection.State != ConnectionState.Open)
@@ -22,7 +22,7 @@ namespace BTL_LTTQ.Classes
             }
         }
 
-        void CloseConnect()
+        public void CloseConnect()
         {
             if (sqlConnection.State != ConnectionState.Closed)
             {

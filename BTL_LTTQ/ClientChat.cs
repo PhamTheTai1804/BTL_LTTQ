@@ -39,9 +39,12 @@ namespace BTL_LTTQ
                 client.Connect(IP);
                 AddSentMessage(client.LocalEndPoint.ToString());
                 AddSentMessage(MyID);
-                string message = MyID + FrID; 
+                string message = MyID +"#LoadHist"+ FrID; //fill enough characters ( Load Index Requires 7 )
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 client.Send(data);
+                byte[] dataReturn = new byte[1024 * 15000];
+                int bytesRead = client.Receive(dataReturn);
+                LoadOldMessage(Encoding.UTF8.GetString(dataReturn, 0, bytesRead));
             }
             catch
             {
@@ -82,7 +85,7 @@ namespace BTL_LTTQ
 
                     this.Invoke((MethodInvoker)delegate
                     {
-                        AddReceivedMessage(message);
+                        AddReceivedMessage(message);                        
                     });
                 }
             }
@@ -148,6 +151,16 @@ namespace BTL_LTTQ
             receivedMessagePanel.Controls.Add(messageLabel);
             ContainerChat.Controls.Add(receivedMessagePanel);
             currentYPosition += receivedMessagePanel.Height + 10;
+        }
+        public void LoadOldMessage(string content)
+        {
+            string[] lstMessage = content.Split(';');
+            for (int i = 0; i < lstMessage.Length - 1; i++)
+            {
+                string[] split = lstMessage[i].Split(',');
+                if (split[1]==MyID) AddSentMessage(split[0]);
+                else AddReceivedMessage(split[0]);
+            }
         }
     }
 }
