@@ -109,15 +109,16 @@ namespace Server
                     }
                     else if(message.Substring(3,9)=="#LoadHist")
                     {
+                        string IDSend = message.Substring(0, 3);
                         string result = LoadHist(message.Substring(0,3),message.Substring(12));
                         byte[] HistReturn = Encoding.UTF8.GetBytes(result);
                         client.Send(HistReturn);
+                        clients[IDSend] = client;
                         NewMessage(result);
                     }    
                     else {
                         string IDSend = message.Substring(0, 3);
-                        string IDReceive = message.Substring(message.Length - 3);
-                        clients[IDSend] = client;
+                        string IDReceive = message.Substring(message.Length - 3);                        
                         this.Invoke((MethodInvoker)delegate
                         {
                             NewMessage(message);
@@ -203,10 +204,13 @@ namespace Server
             DataTable dt = new DataTable();
             SqlDataAdapter sqlData = new SqlDataAdapter(command);
             sqlData.Fill(dt);
-            string res = "";
-            foreach (DataRow dr in dt.Rows)
+            string res = "&^*";
+            if (dt.Rows.Count > 0)
             {
-                res += dr[0].ToString() + "," + dr[1].ToString() + ";";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    res += dr[0].ToString() + "," + dr[1].ToString() + ";";
+                }
             }
             return res;
         }

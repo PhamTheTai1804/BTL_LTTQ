@@ -42,7 +42,7 @@ namespace BTL_LTTQ
                 string message = MyID +"#LoadHist"+ FrID; //fill enough characters ( Load Index Requires 7 )
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 client.Send(data);
-                byte[] dataReturn = new byte[1024 * 15000];
+                byte[] dataReturn = new byte[1024 * 1000];
                 int bytesRead = client.Receive(dataReturn);
                 LoadOldMessage(Encoding.UTF8.GetString(dataReturn, 0, bytesRead));
             }
@@ -154,7 +154,8 @@ namespace BTL_LTTQ
         }
         public void LoadOldMessage(string content)
         {
-            string[] lstMessage = content.Split(';');
+            if (content == "&^*") {  return; }
+            string[] lstMessage = content.Substring(3).Split(';');
             for (int i = 0; i < lstMessage.Length - 1; i++)
             {
                 string[] split = lstMessage[i].Split(',');
