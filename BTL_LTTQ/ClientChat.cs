@@ -41,7 +41,7 @@ namespace BTL_LTTQ
                 AddSentMessage(MyID);
                 string message = MyID +"#LoadHist"+ FrID; //fill enough characters ( Load Index Requires 7 )
                 byte[] data = Encoding.UTF8.GetBytes(message);
-                client.Send(data);
+                client.Send(data);// send request to server
                 byte[] dataReturn = new byte[1024 * 1000];
                 int bytesRead = client.Receive(dataReturn);
                 LoadOldMessage(Encoding.UTF8.GetString(dataReturn, 0, bytesRead));
@@ -66,7 +66,7 @@ namespace BTL_LTTQ
         {
             if (!string.IsNullOrEmpty(textBoxChat.Text))
             {
-                string message = MyID + textBoxChat.Text+FrID;
+                string message = MyID + textBoxChat.Text+"12345678910"+FrID;
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 client.Send(data);
                 AddSentMessage(textBoxChat.Text);

@@ -20,12 +20,14 @@ namespace Server
         IPEndPoint IP;
         Socket server;
         Dictionary<string, Socket> clients;
-
+        Dictionary<string,int> ClInDb;
         public Server()
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
             Connect();
+            ClInDb = new Dictionary<string, int>();
+            LoadClientFromDb();
         }
 
         public void Connect()
@@ -86,7 +88,7 @@ namespace Server
                     int bytesRead = client.Receive(data);
                     string message = Encoding.UTF8.GetString(data, 0, bytesRead);
                     //Request Login
-                    if(message.Substring(0,6)=="#Login")
+                    if (message.Substring(0, 6) == "#Login")
                     {
                         string[] info = message.Substring(6).Split(',');
                         string result = CheckLogin(info[0], info[1]);
@@ -95,44 +97,46 @@ namespace Server
                             byte[] IDReturn = Encoding.UTF8.GetBytes(result);
                             client.Send(IDReturn);
                         }
-                        else{
+                        else
+                        {
                             byte[] IDReturn = Encoding.UTF8.GetBytes(result);
                             client.Send(IDReturn);
                         }
                     }
                     //Request Load Friends On Index Page
-                    else if (message.Substring(0,7) == "#LoadFr")
+                    else if (message.Substring(0, 7) == "#LoadFr")
                     {
-                        string result = LoadIndex(message.Substring(7,3));
+                        string result = LoadIndex(message.Substring(7, 3));
                         byte[] ListFrReturn = Encoding.UTF8.GetBytes(result);
                         client.Send(ListFrReturn);
                     }
-                    else if(message.Substring(3,9)=="#LoadHist")
+                    else if (message.Substring(3, 9) == "#LoadHist")
                     {
                         string IDSend = message.Substring(0, 3);
-                        string result = LoadHist(message.Substring(0,3),message.Substring(12));
+                        string result = LoadHist(message.Substring(0, 3), message.Substring(12));
                         byte[] HistReturn = Encoding.UTF8.GetBytes(result);
                         client.Send(HistReturn);
                         clients[IDSend] = client;
                         NewMessage(result);
-                    }    
-                    else {
+                    }
+                    else
+                    {
                         string IDSend = message.Substring(0, 3);
-                        string IDReceive = message.Substring(message.Length - 3);                        
+                        string IDReceive = message.Substring(message.Length - 3);
                         this.Invoke((MethodInvoker)delegate
                         {
                             NewMessage(message);
 
                         });
-
-                        if (clients.ContainsKey(IDReceive))
+                        if (ClInDb.ContainsKey(IDReceive))
                         {
-
-                            Send(clients[IDReceive], message.Substring(3, message.Length - 6));
-                            SaveMessageToDb(IDSend,IDReceive, message.Substring(3, message.Length - 6));
+                            SaveMessageToDb(IDSend, IDReceive, message.Substring(3, message.Length - 17));
+                            if (clients.ContainsKey(IDReceive))
+                            {
+                                Send(clients[IDReceive], message.Substring(3, message.Length - 17));
+                            }
                         }
                     }
-                  
                 }
             }
             catch
@@ -226,6 +230,20 @@ namespace Server
                 db.OpenConnect();
                 int rowsAffected = command.ExecuteNonQuery();
                 db.CloseConnect();
+            }
+        }
+        public void LoadClientFromDb()
+        {            
+            string sqlSelect = "SELECT RIGHT('000'+CAST([MaNguoiDung] AS VARCHAR(3)),3)\r\nFROM [dbo].[NguoiDung]";
+
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            for (int i=0;i<dt.Rows.Count;i++)
+            {
+                DataRow dr = dt.Rows[i];
+                ClInDb.Add(dr[0].ToString(),i);
             }
         }
     }
