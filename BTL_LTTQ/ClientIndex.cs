@@ -19,7 +19,6 @@ namespace Client
     public partial class ClientIndex : Form
     {
         private string MyID;
-        DataBaseProcess db = new DataBaseProcess();
         public ClientIndex(string id)
         {
             InitializeComponent();
@@ -39,7 +38,7 @@ namespace Client
             try
             {
                 client.Connect(IP);
-                string RequestLogin = "#LoadFr"+MyID+"FillToEnough";
+                string RequestLogin = "#LoadF"+MyID;
                 byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
                 client.Send(data);
                 byte[] dataReturn = new byte[1024 * 5000];
@@ -57,15 +56,8 @@ namespace Client
             int lct = 0;
             for (int i=0;i< listFr.Length-1;i++)
             {
-                string path = @"C:\Users\theta\OneDrive\Hình ảnh\Legion'sDragonWallpaper\Legion Dragon Red.jpg";
-                Image image;
-                byte[] img = File.ReadAllBytes(path);
-                using (MemoryStream ms = new MemoryStream(img))
-                {
-                    image = Image.FromStream(ms);
-                }
                 string[] InfoCertain = listFr[i].Split(',');
-                UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], image);
+                UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1],InfoCertain[2], Properties.Resources.Test);
                 avt.Location = new Point(lct, 0);
                 lct += 130;
                 this.Controls.Add(avt);

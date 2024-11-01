@@ -14,12 +14,14 @@ namespace BTL_LTTQ
         Socket client;
         string FrID;
         string MyID;
+        string status;
         private int currentYPosition = 0;
 
-        public ClientChat(string myid,string uID)
+        public ClientChat(string myid,string uID, string stt)
         {
             MyID = myid;
-            FrID= uID;
+            FrID = uID;
+            status = stt;
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.Size = new Size(1280, 900);
@@ -27,7 +29,7 @@ namespace BTL_LTTQ
             this.Location = new Point(300, 50);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            Connect();
+            Connect();            
         }
 
         public void Connect()
@@ -39,11 +41,12 @@ namespace BTL_LTTQ
                 client.Connect(IP);
                 AddSentMessage(client.LocalEndPoint.ToString());
                 AddSentMessage(MyID);
-                string message = MyID +"#LoadHist"+ FrID; //fill enough characters ( Load Index Requires 7 )
+                string message = "#LoadH"+MyID +FrID+status; 
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 client.Send(data);// send request to server
                 byte[] dataReturn = new byte[1024 * 1000];
                 int bytesRead = client.Receive(dataReturn);
+                status = "0";
                 LoadOldMessage(Encoding.UTF8.GetString(dataReturn, 0, bytesRead));
             }
             catch
@@ -66,7 +69,7 @@ namespace BTL_LTTQ
         {
             if (!string.IsNullOrEmpty(textBoxChat.Text))
             {
-                string message = MyID + textBoxChat.Text+"12345678910"+FrID;
+                string message = "#Messg"+MyID + FrID + textBoxChat.Text;
                 byte[] data = Encoding.UTF8.GetBytes(message);
                 client.Send(data);
                 AddSentMessage(textBoxChat.Text);

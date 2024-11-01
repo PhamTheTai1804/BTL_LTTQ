@@ -30,7 +30,9 @@
         {
             picAvt = new PictureBox();
             lbAvt = new Label();
+            picIcon = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)picAvt).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)picIcon).BeginInit();
             SuspendLayout();
             // 
             // picAvt
@@ -52,16 +54,27 @@
             lbAvt.TabIndex = 1;
             lbAvt.Text = "label1";
             // 
+            // picIcon
+            // 
+            picIcon.Location = new Point(122, 6);
+            picIcon.Name = "picIcon";
+            picIcon.Size = new Size(25, 25);
+            picIcon.SizeMode = PictureBoxSizeMode.StretchImage;
+            picIcon.TabIndex = 2;
+            picIcon.TabStop = false;
+            // 
             // UserControlAvatar
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(picIcon);
             Controls.Add(lbAvt);
             Controls.Add(picAvt);
             Name = "UserControlAvatar";
             Load += UserControlAvatar_Load;
             Click += UserControlAvatar_Click;
             ((System.ComponentModel.ISupportInitialize)picAvt).EndInit();
+            ((System.ComponentModel.ISupportInitialize)picIcon).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -70,5 +83,6 @@
 
         private PictureBox picAvt;
         private Label lbAvt;
+        private PictureBox picIcon;
     }
 }
