@@ -31,10 +31,10 @@
             buttonIndex = new Button();
             buttonFr = new Button();
             panelIndex = new Panel();
+            panelOnl = new Panel();
             label2 = new Label();
             label1 = new Label();
             panelAllFr = new Panel();
-            panelOnl = new Panel();
             panelFr = new Panel();
             panelAddFr = new Panel();
             label4 = new Label();
@@ -69,20 +69,27 @@
             // panelIndex
             // 
             panelIndex.BackColor = Color.Transparent;
+            panelIndex.Controls.Add(panelOnl);
             panelIndex.Controls.Add(label2);
             panelIndex.Controls.Add(label1);
             panelIndex.Controls.Add(panelAllFr);
-            panelIndex.Controls.Add(panelOnl);
             panelIndex.Location = new Point(12, 62);
             panelIndex.Name = "panelIndex";
             panelIndex.Size = new Size(1200, 750);
             panelIndex.TabIndex = 7;
             // 
+            // panelOnl
+            // 
+            panelOnl.Location = new Point(3, 65);
+            panelOnl.Name = "panelOnl";
+            panelOnl.Size = new Size(1200, 170);
+            panelOnl.TabIndex = 4;
+            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14F);
-            label2.Location = new Point(3, 238);
+            label2.Location = new Point(15, 266);
             label2.Name = "label2";
             label2.Size = new Size(183, 32);
             label2.TabIndex = 3;
@@ -102,20 +109,11 @@
             // panelAllFr
             // 
             panelAllFr.BackColor = Color.Transparent;
-            panelAllFr.Location = new Point(0, 297);
+            panelAllFr.Location = new Point(3, 329);
             panelAllFr.Margin = new Padding(0, 3, 3, 3);
             panelAllFr.Name = "panelAllFr";
             panelAllFr.Size = new Size(1137, 450);
             panelAllFr.TabIndex = 1;
-            // 
-            // panelOnl
-            // 
-            panelOnl.AutoScroll = true;
-            panelOnl.BackColor = Color.Transparent;
-            panelOnl.Location = new Point(3, 62);
-            panelOnl.Name = "panelOnl";
-            panelOnl.Size = new Size(1133, 155);
-            panelOnl.TabIndex = 0;
             // 
             // panelFr
             // 
@@ -190,11 +188,11 @@
         private Label label2;
         private Label label1;
         private Panel panelAllFr;
-        private Panel panelOnl;
         private Panel panelFr;
         private Panel panelAddFr;
         private Label label4;
         private Label label3;
         private Panel panelKNN;
+        private Panel panelOnl;
     }
 }

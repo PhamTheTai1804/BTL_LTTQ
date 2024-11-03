@@ -140,7 +140,7 @@ namespace Server
                         string[] info = message.Substring(6).Split(',');
                         Register(info);
                     }
-                    else if (message.Substring(0,6)=="#APIAI")
+                    /*else if (message.Substring(0,6)=="#APIAI")
                     {
                         string IDOfRecommendFriends = "";
                         IDOfRecommendFriends = await APIRecommendUser(message.Substring(6));
@@ -149,7 +149,7 @@ namespace Server
                         byte[] Rcm = Encoding.UTF8.GetBytes(result);
                         client.Send(Rcm);
                         NewMessage(result);
-                    }    
+                    }    */
                     else
                     {
                         string IDSend = message.Substring(6, 3);

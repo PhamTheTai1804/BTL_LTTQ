@@ -32,8 +32,46 @@ namespace Client
 
         private void ClientIndex_Load(object sender, EventArgs e)
         {
-            LoadIndex();
-            LoadCommunityPage();
+            string Result = "";
+            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            try
+            {
+                client.Connect(IP);
+                string RequestLogin = "#LoadF" + MyID;
+                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                client.Send(data);
+                byte[] dataReturn = new byte[1024 * 5000];
+                int bytesRead = client.Receive(dataReturn);
+                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            finally { client.Close(); };
+
+            string[] listFr = Result.Split(';');
+            int lctOnl = 0;
+            int lctOffl = 0;
+            for (int i = 0; i < listFr.Length - 1; i++)
+            {
+                string[] InfoCertain = listFr[i].Split(',');
+                //UserControlAvatar receive MyID , Friend's ID , Friend's UserName , Friend's status 
+                UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test);
+                avt.Location = new Point(lctOffl, 0);
+                lctOffl += 130;
+                panelAllFr.Controls.Add(avt);
+                if (InfoCertain[3] == "1")
+                {
+                    UserControlAvatar temp = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test); ;
+                    temp.Location = new Point(lctOnl, 0);
+                    lctOnl += 130;
+                    panelOnl.Controls.Add(temp);
+                }
+            }
+            //LoadCommunityPage();
         }
 
         private void buttonIndex_Click(object sender, EventArgs e)
@@ -116,16 +154,20 @@ namespace Client
             finally { client.Close(); };
             string[] RcmFriends = Result.Split(';');
             int lct = 0;
-            foreach(string item in RcmFriends)
+            foreach (string item in RcmFriends)
             {
-                string[] InfoCertain = item.Split(',');                
+                string[] InfoCertain = item.Split(',');
                 UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], "0", Properties.Resources.Test);
                 avt.Location = new Point(lct, 0);
                 lct += 130;
                 panelKNN.Controls.Add(avt);
-            }    
+            }
         }
-        
+
+        private void panelIndex_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
 

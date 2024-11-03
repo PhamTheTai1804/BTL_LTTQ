@@ -25,9 +25,9 @@ namespace BTL_LTTQ
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.Size = new Size(1280, 900);
-            this.StartPosition = FormStartPosition.Manual;
+
             this.Location = new Point(300, 50);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+  
             this.MaximizeBox = false;
             Connect();            
         }
@@ -130,9 +130,12 @@ namespace BTL_LTTQ
 
             sentMessagePanel.BackColor = Color.Blue;
             MakeRoundedCorners(sentMessagePanel, 10);
-            sentMessagePanel.Location = new Point(ContainerChat.Width - sentMessagePanel.Width - 22, currentYPosition);
+            sentMessagePanel.Location = new Point(ContainerChat.Width - sentMessagePanel.Width - 22, currentYPosition+ContainerChat.AutoScrollPosition.Y);
+            Console.WriteLine(ContainerChat.Location);
             sentMessagePanel.Controls.Add(messageLabel);
             ContainerChat.Controls.Add(sentMessagePanel);
+            ContainerChat.VerticalScroll.Value = ContainerChat.VerticalScroll.Maximum;
+            ContainerChat.PerformLayout();
             currentYPosition += sentMessagePanel.Height + 10;
         }
 
@@ -150,7 +153,7 @@ namespace BTL_LTTQ
 
             receivedMessagePanel.BackColor = Color.LightGray;
             MakeRoundedCorners(receivedMessagePanel, 10);
-            receivedMessagePanel.Location = new Point(10, currentYPosition);
+            receivedMessagePanel.Location = new Point(10, currentYPosition + ContainerChat.AutoScrollPosition.Y);
             receivedMessagePanel.Controls.Add(messageLabel);
             ContainerChat.Controls.Add(receivedMessagePanel);
             currentYPosition += receivedMessagePanel.Height + 10;
