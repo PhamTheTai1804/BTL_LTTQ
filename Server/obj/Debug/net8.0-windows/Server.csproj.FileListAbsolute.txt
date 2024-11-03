@@ -29,3 +29,4 @@ C:\Users\theta\source\repos\BTL_LTTQ\Server\bin\Debug\net8.0-windows\Client.dll.
 C:\Users\theta\source\repos\BTL_LTTQ\Server\obj\Debug\net8.0-windows\Server.csproj.AssemblyReference.cache
 C:\Users\theta\source\repos\BTL_LTTQ\Server\obj\Debug\net8.0-windows\Server.sourcelink.json
 C:\Users\theta\source\repos\BTL_LTTQ\Server\obj\Debug\net8.0-windows\Server.csproj.Up2Date
+C:\Users\theta\source\repos\BTL_LTTQ\Server\bin\Debug\net8.0-windows\Newtonsoft.Json.dll

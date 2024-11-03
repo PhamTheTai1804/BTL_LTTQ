@@ -13,6 +13,10 @@ using System.Diagnostics.Eventing.Reader;
 using Microsoft.VisualBasic.ApplicationServices;
 using System.Reflection.Metadata;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using Newtonsoft.Json;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Security.AccessControl;
 
 namespace Server
 {
@@ -79,7 +83,7 @@ namespace Server
             }
         }
 
-        public void Receive(object obj)
+        public async void Receive(object obj)
         {
             Socket client = obj as Socket;
             try
@@ -110,6 +114,7 @@ namespace Server
                     {
                         string result = LoadIndex(message.Substring(6, 3));
                         byte[] ListFrReturn = Encoding.UTF8.GetBytes(result);
+                        NewMessage(result);
                         client.Send(ListFrReturn);
                     }
                     else if (message.Substring(0, 6) == "#LoadH")
@@ -135,6 +140,16 @@ namespace Server
                         string[] info = message.Substring(6).Split(',');
                         Register(info);
                     }
+                    else if (message.Substring(0,6)=="#APIAI")
+                    {
+                        string IDOfRecommendFriends = "";
+                        IDOfRecommendFriends = await APIRecommendUser(message.Substring(6));
+                        string result = "";
+                        result = GetInfoRcmFriend(IDOfRecommendFriends);
+                        byte[] Rcm = Encoding.UTF8.GetBytes(result);
+                        client.Send(Rcm);
+                        NewMessage(result);
+                    }    
                     else
                     {
                         string IDSend = message.Substring(6, 3);
@@ -213,9 +228,12 @@ namespace Server
             SqlDataAdapter sqlData = new SqlDataAdapter(command);
             sqlData.Fill(dt);
             string res = "";
+            //res = ID+UserName+status(is unseen message ? ) 
             foreach (DataRow dr in dt.Rows)
             {
-                res += dr[0].ToString() + "," + dr[1].ToString() + ","+dr[2].ToString()+";";
+                res += dr[0].ToString() + "," + dr[1].ToString() + ","+dr[2].ToString()+",";
+                if (clients.ContainsKey(dr[0].ToString())) res += "1;"; //meaning this fr is onl
+                else res += "0;";//meaning this friend is not onl now 
             }
             return res;
         }
@@ -334,6 +352,59 @@ namespace Server
                     db.CloseConnect();
                 }
             }    
+        }
+        private string GetInfoRcmFriend(string RcmFrs)
+        {
+            string result = "";
+            string[] listRcm = RcmFrs.Split(",");
+            foreach(string item in listRcm)
+            {
+                string sqlSelect = "  SELECT RIGHT('000'+CAST([MaNguoiDung] AS VARCHAR(3)),3),[TenDangNhap]\r\n  FROM [dbo].[NguoiDung] u\r\n  WHERE [MaNguoiDung] = @ID";
+
+                SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+                command.Parameters.AddWithValue("@ID", item);
+                DataTable dt = new DataTable();
+                SqlDataAdapter sqlData = new SqlDataAdapter(command);
+                sqlData.Fill(dt);
+                result += dt.Rows[0][0].ToString() + "," + dt.Rows[0][1].ToString() + ";";
+            }
+            result = result.Substring(0, result.Length - 1);
+            return result;
+        }
+        private static async Task<string> APIRecommendUser(string UserID)
+        {
+            
+            using (HttpClient client = new HttpClient())
+            {
+                // URL of API Flask 
+                string url = $"http://127.0.0.1:5000/tim_nguoi_dung_tuong_dong?MaNguoiDung={UserID}";
+                string result = "";
+                try
+                {
+                    //send request
+                    HttpResponseMessage response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+
+                    // read responce and parse JSON
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    List<int> similarUsers = JsonConvert.DeserializeObject<List<int>>(responseBody);
+
+                    // return result
+                    Console.WriteLine("recommened :");
+                    foreach (int userId in similarUsers)
+                    {
+                        Console.WriteLine($"MaNguoiDung: {userId}");
+                        result += userId + ",";
+                    }
+                }
+                catch (HttpRequestException e)
+                {
+                    Console.WriteLine("fail connect to API:");
+                    Console.WriteLine(e.Message);
+                }
+                result = result.Substring(0, result.Length - 1);
+                return result;
+            }
         }
     }
 }
