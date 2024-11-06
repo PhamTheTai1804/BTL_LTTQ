@@ -47,12 +47,13 @@
             // 
             // lbAvt
             // 
-            lbAvt.AutoSize = true;
-            lbAvt.Location = new Point(25, 116);
+            lbAvt.Dock = DockStyle.Bottom;
+            lbAvt.Location = new Point(0, 130);
             lbAvt.Name = "lbAvt";
-            lbAvt.Size = new Size(50, 20);
+            lbAvt.Size = new Size(150, 20);
             lbAvt.TabIndex = 1;
             lbAvt.Text = "label1";
+            lbAvt.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // picIcon
             // 
@@ -71,12 +72,10 @@
             Controls.Add(lbAvt);
             Controls.Add(picAvt);
             Name = "UserControlAvatar";
-            Load += UserControlAvatar_Load;
             Click += UserControlAvatar_Click;
             ((System.ComponentModel.ISupportInitialize)picAvt).EndInit();
             ((System.ComponentModel.ISupportInitialize)picIcon).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

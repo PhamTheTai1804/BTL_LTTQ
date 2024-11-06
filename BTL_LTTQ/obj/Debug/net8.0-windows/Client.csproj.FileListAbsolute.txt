@@ -29,3 +29,7 @@ C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\Client.pd
 C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\Client.genruntimeconfig.cache
 C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\ref\Client.dll
 C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\bin\Debug\net8.0-windows\Newtonsoft.Json.dll
+C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\bin\Debug\net8.0-windows\MaterialSkin.dll
+C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\Client.RegisterForm.resources
+C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\Client.UserProfileCard.resources
+C:\Users\theta\source\repos\BTL_LTTQ\BTL_LTTQ\obj\Debug\net8.0-windows\Client.Userconversation.resources

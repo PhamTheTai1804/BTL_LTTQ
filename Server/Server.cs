@@ -140,7 +140,7 @@ namespace Server
                         string[] info = message.Substring(6).Split(',');
                         Register(info);
                     }
-                    /*else if (message.Substring(0,6)=="#APIAI")
+                    else if (message.Substring(0,6)=="#APIAI")
                     {
                         string IDOfRecommendFriends = "";
                         IDOfRecommendFriends = await APIRecommendUser(message.Substring(6));
@@ -149,7 +149,26 @@ namespace Server
                         byte[] Rcm = Encoding.UTF8.GetBytes(result);
                         client.Send(Rcm);
                         NewMessage(result);
-                    }    */
+                    }   
+                    else if(message.Substring(0,6)=="#FrReq")
+                    {
+                        AddFriendRequest(message.Substring(6,3),message.Substring(9));
+                    }    
+                    else if(message.Substring(0,6)=="#RcvFr")
+                    {
+                        string result = "";
+                        result = LoadFriendRequest(message.Substring(6));
+                        byte[] FrRequests = Encoding.UTF8.GetBytes(result);
+                        client.Send(FrRequests);
+                        
+                    }
+                    else if (message.Substring(0, 6) == "#LdAll")
+                    {
+                        string result = "";
+                        result = LoadAllUser(message.Substring(6));
+                        byte[] FrRequests = Encoding.UTF8.GetBytes(result);
+                        client.Send(FrRequests);
+                    }
                     else
                     {
                         string IDSend = message.Substring(6, 3);
@@ -220,7 +239,7 @@ namespace Server
         }
         public string LoadIndex(string ID)
         {
-            string sqlSelect = "select RIGHT('000'+CAST(f.[MaBanBe] AS VARCHAR(3)),3),u.[TenDangNhap],f.[TrangThai]\r\nfrom [dbo].[BanBe] f\r\nINNER JOIN [dbo].[NguoiDung] u\r\nON f.MaBanBe=u.MaNguoiDung\r\nwhere f.[MaNguoiDung] = @IDUser";
+            string sqlSelect = "SELECT \r\n    RIGHT('000' + CAST(f.[MaBanBe] AS VARCHAR(3)), 3) ,\r\n    u.[TenDangNhap],\r\n    f.[TrangThai],\r\n    m.NoiDung,\r\n\tRIGHT('000' + CAST(m.MaNguoiGui AS VARCHAR(3)), 3)\r\nFROM \r\n    [dbo].[BanBe] f\r\nINNER JOIN \r\n    [dbo].[NguoiDung] u ON f.MaBanBe = u.MaNguoiDung\r\nOUTER APPLY \r\n    (SELECT TOP 1 NoiDung , MaNguoiGui\r\n     FROM [dbo].[TinNhan] \r\n     WHERE (MaNguoiNhan = @IDUser \r\n       AND MaNguoiGui = f.MaBanBe) OR (MaNguoiNhan = f.MaBanBe \r\n       AND MaNguoiGui = @IDUser)\r\n     ORDER BY ThoiGian DESC) m\r\nWHERE \r\n    f.[MaNguoiDung] = @IDUser;";
 
             SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
             command.Parameters.AddWithValue("@IDUser", ID);
@@ -231,9 +250,9 @@ namespace Server
             //res = ID+UserName+status(is unseen message ? ) 
             foreach (DataRow dr in dt.Rows)
             {
-                res += dr[0].ToString() + "," + dr[1].ToString() + ","+dr[2].ToString()+",";
-                if (clients.ContainsKey(dr[0].ToString())) res += "1;"; //meaning this fr is onl
-                else res += "0;";//meaning this friend is not onl now 
+                res += dr[0].ToString() + "$" + dr[1].ToString() + "$"+dr[2].ToString()+"$"+dr[3].ToString()+"$"+dr[4].ToString()+"$";
+                if (clients.ContainsKey(dr[0].ToString())) res += "1&"; //meaning this fr is onl
+                else res += "0&";//meaning this friend is not onl now 
             }
             return res;
         }
@@ -405,6 +424,53 @@ namespace Server
                 result = result.Substring(0, result.Length - 1);
                 return result;
             }
+        }
+        private void AddFriendRequest(string myID, string uID)
+        {
+            string sqlInsert = "INSERT INTO [dbo].[LoiMoiKetBan]([MaNguoiGui],[MaNguoiNhan])\r\nVALUES(@mid,@uid)";
+
+            using (SqlCommand command = new SqlCommand(sqlInsert, db.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@mid", myID);
+                command.Parameters.AddWithValue("@uid", uID);
+
+                db.OpenConnect();
+                int rowsAffected = command.ExecuteNonQuery();
+                db.CloseConnect();
+            }
+        }
+        private string LoadFriendRequest(string myID)
+        {
+            string result = "";
+            string sqlSelect = "SELECT [MaNguoiGui]\r\nFROM [dbo].[LoiMoiKetBan]\r\nWHERE [MaNguoiNhan]=@id";
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            command.Parameters.AddWithValue("@id", myID);
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                result += dt.Rows[i].ToString()+",";
+            }
+            result= result.Substring(0, result.Length -1);
+            return result;
+        }
+        private string LoadAllUser(string ID)
+        {
+            string sqlSelect = "SELECT RIGHT('000'+CAST(u.MaNguoiDung AS VARCHAR(3)),3),u.[TenDangNhap]\r\nfrom [dbo].[NguoiDung] u\r\nWHERE [MaNguoiDung] NOT IN (SELECT [MaBanBe] FROM [dbo].[BanBe] WHERE [MaNguoiDung]=@id) AND [MaNguoiDung] !=@id";
+
+            SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
+            command.Parameters.AddWithValue("@id", ID);
+            DataTable dt = new DataTable();
+            SqlDataAdapter sqlData = new SqlDataAdapter(command);
+            sqlData.Fill(dt);
+            string res = "";
+            foreach (DataRow dr in dt.Rows)
+            {
+                res += dr[0].ToString() + "," + dr[1].ToString() + ";";
+            }
+            res=res.Substring(0, res.Length -1);
+            return res;
         }
     }
 }

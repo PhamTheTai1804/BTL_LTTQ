@@ -3,76 +3,96 @@
   "WorkspaceRootPath": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\client.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\client.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientindex.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientindex.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientindex.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\server\\server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|solutionrelative:server\\server.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\userconversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\userconversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\classes\\databaseprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\classes\\databaseprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\usercontrolavatar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\userconversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\userconversation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientchat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\usercontrolavatar.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\usercontrolavatar.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\userprofilecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\userprofilecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\userprofilecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\userprofilecard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\userprofilecard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\userprofilecard.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\registerform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\registerform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\properties\\resources.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{75EAF4F7-A231-452A-99AC-4F36C92FAB4B}|Server\\Server.csproj|solutionrelative:server\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\classes\\databaseprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\classes\\databaseprocess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientindex.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientindex.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|c:\\users\\theta\\source\\repos\\btl_lttq\\btl_lttq\\clientchat.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\clientchat.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\btl_lttq\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}",
+      "RelativeMoniker": "D:0:0:{ECE420B7-90D9-443D-9992-6C8A0358C2D2}|BTL_LTTQ\\Client.csproj|solutionrelative:btl_lttq\\properties\\resources.resx||{FF4D6ACA-9352-4A5F-821E-F4D6EBDCAB11}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,68 +102,150 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 20,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "Userconversation.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Userconversation.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\Userconversation.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Userconversation.cs",
+              "RelativeToolTip": "BTL_LTTQ\\Userconversation.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAvwCUAAABNAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T19:07:25.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Userconversation.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Userconversation.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\Userconversation.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Userconversation.cs [Design]",
+              "RelativeToolTip": "BTL_LTTQ\\Userconversation.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T19:04:31.196Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserProfileCard.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.Designer.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\UserProfileCard.Designer.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.Designer.cs",
+              "RelativeToolTip": "BTL_LTTQ\\UserProfileCard.Designer.cs",
+              "ViewState": "AQIAACcAAAAAAAAAAAAYwC0AAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T18:40:25.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "UserProfileCard.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\UserProfileCard.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.cs",
+              "RelativeToolTip": "BTL_LTTQ\\UserProfileCard.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAwwAwAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T18:40:20.467Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UserProfileCard.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\UserProfileCard.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserProfileCard.cs [Design]",
+              "RelativeToolTip": "BTL_LTTQ\\UserProfileCard.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T18:39:43.435Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UserControlAvatar.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.Designer.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\UserControlAvatar.Designer.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.Designer.cs",
+              "RelativeToolTip": "BTL_LTTQ\\UserControlAvatar.Designer.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAYwDIAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T16:33:23.237Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\RegisterForm.Designer.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\RegisterForm.Designer.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\RegisterForm.Designer.cs",
+              "RelativeToolTip": "BTL_LTTQ\\RegisterForm.Designer.cs",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAQwFQAAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:45:45.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Program.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\Program.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Program.cs",
+              "RelativeToolTip": "BTL_LTTQ\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-06T10:15:09.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ClientIndex.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.Designer.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\ClientIndex.Designer.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.Designer.cs",
+              "RelativeToolTip": "BTL_LTTQ\\ClientIndex.Designer.cs",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAxwBYAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-03T15:59:42.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "BTL_LTTQ\\LoginForm.Designer.cs",
+              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.Designer.cs",
+              "RelativeToolTip": "BTL_LTTQ\\LoginForm.Designer.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAQwFcAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-30T08:02:01.478Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ClientIndex.cs [Design]",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\ClientIndex.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.cs [Design]",
               "RelativeToolTip": "BTL_LTTQ\\ClientIndex.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T16:00:38.1Z"
+              "WhenOpened": "2024-11-03T16:00:38.1Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClientIndex.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.Designer.cs",
-              "RelativeDocumentMoniker": "BTL_LTTQ\\ClientIndex.Designer.cs",
-              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.Designer.cs",
-              "RelativeToolTip": "BTL_LTTQ\\ClientIndex.Designer.cs",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAYwFEAAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-03T15:59:42.672Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Client",
-              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Client.csproj",
-              "RelativeDocumentMoniker": "BTL_LTTQ\\Client.csproj",
-              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Client.csproj",
-              "RelativeToolTip": "BTL_LTTQ\\Client.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-01T16:20:11.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Server",
-              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\Server\\Server.csproj",
-              "RelativeDocumentMoniker": "Server\\Server.csproj",
-              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\Server\\Server.csproj",
-              "RelativeToolTip": "Server\\Server.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-01T14:55:25.998Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "LoginForm.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.Designer.cs",
-              "RelativeDocumentMoniker": "BTL_LTTQ\\LoginForm.Designer.cs",
-              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.Designer.cs",
-              "RelativeToolTip": "BTL_LTTQ\\LoginForm.Designer.cs",
-              "ViewState": "AQIAAOEBAAAAAAAAAADwv6MBAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T08:02:01.478Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 22,
               "Title": "Resources.resx",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Properties\\Resources.resx",
               "RelativeDocumentMoniker": "BTL_LTTQ\\Properties\\Resources.resx",
@@ -154,19 +256,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "ClientChat.Designer.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientChat.Designer.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\ClientChat.Designer.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientChat.Designer.cs",
               "RelativeToolTip": "BTL_LTTQ\\ClientChat.Designer.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAYwEQAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-28T14:21:31.897Z"
+              "WhenOpened": "2024-10-28T14:21:31.897Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "Resources.Designer.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Properties\\Resources.Designer.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\Properties\\Resources.Designer.cs",
@@ -178,31 +281,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LoginForm.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.cs",
-              "RelativeDocumentMoniker": "BTL_LTTQ\\LoginForm.cs",
-              "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.cs [Design]",
-              "RelativeToolTip": "BTL_LTTQ\\LoginForm.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T16:31:08.415Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Server.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\Server\\Server.cs",
               "RelativeToolTip": "Server\\Server.cs",
-              "ViewState": "AQIAAG4AAAAAAAAAAAAiwJcAAAAbAAAA",
+              "ViewState": "AQIAAOwAAAAAAAAAAAAwwPEAAAC4AQAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T12:11:02.788Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "Server.cs [Design]",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\Server\\Server.cs",
               "RelativeDocumentMoniker": "Server\\Server.cs",
@@ -225,68 +317,70 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\LoginForm.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\LoginForm.cs",
               "RelativeToolTip": "BTL_LTTQ\\LoginForm.cs",
-              "ViewState": "AQIAAKYAAAAAAAAAAAAuwNUAAAAyAAAA",
+              "ViewState": "AQIAADwAAAAAAAAAAAAYwFAAAABAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T16:32:05.582Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 4,
               "Title": "UserControlAvatar.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\UserControlAvatar.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.cs",
               "RelativeToolTip": "BTL_LTTQ\\UserControlAvatar.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAwBQAAAAgAAAA",
+              "ViewState": "AQIAAEQAAAAAAAAAAAArwFEAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T12:06:04.823Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "UserControlAvatar.cs [Design]",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\UserControlAvatar.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\UserControlAvatar.cs [Design]",
               "RelativeToolTip": "BTL_LTTQ\\UserControlAvatar.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T12:04:08.233Z"
+              "WhenOpened": "2024-10-27T12:04:08.233Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "ClientIndex.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\ClientIndex.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientIndex.cs",
               "RelativeToolTip": "BTL_LTTQ\\ClientIndex.cs",
-              "ViewState": "AQIAADMAAAAAAAAAAAAqwEYAAAAwAAAA",
+              "ViewState": "AQIAAMIAAAAAAAAAAAAswMcAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-27T12:02:46.366Z"
+              "WhenOpened": "2024-10-27T12:02:46.366Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "ClientChat.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientChat.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\ClientChat.cs",
               "ToolTip": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\ClientChat.cs",
               "RelativeToolTip": "BTL_LTTQ\\ClientChat.cs",
-              "ViewState": "AQIAAJMAAAAAAAAAAAAIwJsAAABvAAAA",
+              "ViewState": "AQIAABEAAAAAAAAAAAAmwDcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-27T11:47:56.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "DataBaseProcess.cs",
               "DocumentMoniker": "C:\\Users\\theta\\source\\repos\\BTL_LTTQ\\BTL_LTTQ\\Classes\\DataBaseProcess.cs",
               "RelativeDocumentMoniker": "BTL_LTTQ\\Classes\\DataBaseProcess.cs",

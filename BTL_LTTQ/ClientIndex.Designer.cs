@@ -68,14 +68,14 @@
             // 
             // panelIndex
             // 
-            panelIndex.BackColor = Color.Transparent;
+            panelIndex.BackColor = Color.White;
             panelIndex.Controls.Add(panelOnl);
             panelIndex.Controls.Add(label2);
             panelIndex.Controls.Add(label1);
             panelIndex.Controls.Add(panelAllFr);
             panelIndex.Location = new Point(12, 62);
             panelIndex.Name = "panelIndex";
-            panelIndex.Size = new Size(1200, 750);
+            panelIndex.Size = new Size(1238, 779);
             panelIndex.TabIndex = 7;
             // 
             // panelOnl
@@ -108,6 +108,7 @@
             // 
             // panelAllFr
             // 
+            panelAllFr.AutoScroll = true;
             panelAllFr.BackColor = Color.Transparent;
             panelAllFr.Location = new Point(3, 329);
             panelAllFr.Margin = new Padding(0, 3, 3, 3);
@@ -117,17 +118,20 @@
             // 
             // panelFr
             // 
+            panelFr.BackColor = Color.White;
             panelFr.Controls.Add(panelAddFr);
             panelFr.Controls.Add(label4);
             panelFr.Controls.Add(label3);
             panelFr.Controls.Add(panelKNN);
             panelFr.Location = new Point(12, 62);
             panelFr.Name = "panelFr";
-            panelFr.Size = new Size(1200, 750);
+            panelFr.Size = new Size(1238, 776);
             panelFr.TabIndex = 4;
             // 
             // panelAddFr
             // 
+            panelAddFr.AutoScroll = true;
+            panelAddFr.BackColor = Color.White;
             panelAddFr.Location = new Point(15, 329);
             panelAddFr.Name = "panelAddFr";
             panelAddFr.Size = new Size(1182, 415);
@@ -155,6 +159,7 @@
             // 
             // panelKNN
             // 
+            panelKNN.BackColor = Color.White;
             panelKNN.Location = new Point(9, 63);
             panelKNN.Name = "panelKNN";
             panelKNN.Size = new Size(1191, 204);
@@ -164,7 +169,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.OldLace;
+            BackColor = Color.Salmon;
             ClientSize = new Size(1262, 853);
             Controls.Add(panelFr);
             Controls.Add(panelIndex);
@@ -173,6 +178,7 @@
             Name = "ClientIndex";
             Text = "ClientIndex";
             Load += ClientIndex_Load;
+            Paint += ClientIndex_Paint;
             panelIndex.ResumeLayout(false);
             panelIndex.PerformLayout();
             panelFr.ResumeLayout(false);
