@@ -115,6 +115,7 @@ namespace Server
                         string result = LoadIndex(message.Substring(6, 3));
                         byte[] ListFrReturn = Encoding.UTF8.GetBytes(result);
                         NewMessage(result);
+                        clients[message.Substring(6,3)]=client;
                         client.Send(ListFrReturn);
                     }
                     else if (message.Substring(0, 6) == "#LoadH")
@@ -159,8 +160,8 @@ namespace Server
                         string result = "";
                         result = LoadFriendRequest(message.Substring(6));
                         byte[] FrRequests = Encoding.UTF8.GetBytes(result);
-                        client.Send(FrRequests);
-                        
+                        NewMessage (result);
+                        client.Send(FrRequests);                       
                     }
                     else if (message.Substring(0, 6) == "#LdAll")
                     {
@@ -248,12 +249,16 @@ namespace Server
             sqlData.Fill(dt);
             string res = "";
             //res = ID+UserName+status(is unseen message ? ) 
-            foreach (DataRow dr in dt.Rows)
+            if (dt.Rows.Count > 0)
             {
-                res += dr[0].ToString() + "$" + dr[1].ToString() + "$"+dr[2].ToString()+"$"+dr[3].ToString()+"$"+dr[4].ToString()+"$";
-                if (clients.ContainsKey(dr[0].ToString())) res += "1&"; //meaning this fr is onl
-                else res += "0&";//meaning this friend is not onl now 
+                foreach (DataRow dr in dt.Rows)
+                {
+                    res += dr[0].ToString() + "$" + dr[1].ToString() + "$" + dr[2].ToString() + "$" + dr[3].ToString() + "$" + dr[4].ToString() + "$";
+                    if (clients.ContainsKey(dr[0].ToString())) res += "1&"; //meaning this fr is onl
+                    else res += "0&";//meaning this friend is not onl now 
+                }
             }
+            else res = "NoFriend";
             return res;
         }
         public string LoadHist(string SenderID, string ReceiverID, string stt)
@@ -442,17 +447,21 @@ namespace Server
         private string LoadFriendRequest(string myID)
         {
             string result = "";
-            string sqlSelect = "SELECT [MaNguoiGui]\r\nFROM [dbo].[LoiMoiKetBan]\r\nWHERE [MaNguoiNhan]=@id";
+            string sqlSelect = "SELECT r.[MaNguoiGui] , u.TenDangNhap\r\nFROM [dbo].[LoiMoiKetBan] r\r\nINNER JOIN [dbo].[NguoiDung] U\r\nON r.MaNguoiGui=u.MaNguoiDung\r\nWHERE [MaNguoiNhan]=@id";
             SqlCommand command = new SqlCommand(sqlSelect, db.GetConnection());
             command.Parameters.AddWithValue("@id", myID);
             DataTable dt = new DataTable();
             SqlDataAdapter sqlData = new SqlDataAdapter(command);
             sqlData.Fill(dt);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            if (dt.Rows.Count > 0)
             {
-                result += dt.Rows[i].ToString()+",";
+                foreach (DataRow dr in dt.Rows)
+                {
+                    result += dr[0].ToString() + "," + dr[1].ToString() + ";";
+                }
+                result = result.Substring(0, result.Length - 1);
             }
-            result= result.Substring(0, result.Length -1);
+            else result = "NoFriendRequest";
             return result;
         }
         private string LoadAllUser(string ID)

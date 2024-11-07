@@ -1,6 +1,8 @@
-﻿namespace Client
+﻿using MaterialSkin.Controls;
+
+namespace Client
 {
-    partial class ClientIndex
+    partial class ClientIndex 
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            buttonIndex = new Button();
-            buttonFr = new Button();
             panelIndex = new Panel();
             panelOnl = new Panel();
             label2 = new Label();
@@ -40,31 +40,16 @@
             label4 = new Label();
             label3 = new Label();
             panelKNN = new Panel();
+            panel1 = new Panel();
+            btnProfile = new Button();
+            btnNotifications = new Button();
+            btnCommunity = new Button();
+            btnIndex = new Button();
+            panelNotifications = new Panel();
             panelIndex.SuspendLayout();
             panelFr.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
-            // 
-            // buttonIndex
-            // 
-            buttonIndex.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            buttonIndex.Location = new Point(9, 3);
-            buttonIndex.Name = "buttonIndex";
-            buttonIndex.Size = new Size(124, 47);
-            buttonIndex.TabIndex = 0;
-            buttonIndex.Text = "Trang Chủ";
-            buttonIndex.UseVisualStyleBackColor = true;
-            buttonIndex.Click += buttonIndex_Click;
-            // 
-            // buttonFr
-            // 
-            buttonFr.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            buttonFr.Location = new Point(139, 3);
-            buttonFr.Name = "buttonFr";
-            buttonFr.Size = new Size(124, 47);
-            buttonFr.TabIndex = 6;
-            buttonFr.Text = "Kết Bạn";
-            buttonFr.UseVisualStyleBackColor = true;
-            buttonFr.Click += buttonFr_Click;
             // 
             // panelIndex
             // 
@@ -131,11 +116,12 @@
             // panelAddFr
             // 
             panelAddFr.AutoScroll = true;
-            panelAddFr.BackColor = Color.White;
+            panelAddFr.BackColor = Color.PowderBlue;
             panelAddFr.Location = new Point(15, 329);
             panelAddFr.Name = "panelAddFr";
-            panelAddFr.Size = new Size(1182, 415);
+            panelAddFr.Size = new Size(1182, 436);
             panelAddFr.TabIndex = 3;
+            panelAddFr.Paint += panelAddFr_Paint;
             // 
             // label4
             // 
@@ -165,16 +151,80 @@
             panelKNN.Size = new Size(1191, 204);
             panelKNN.TabIndex = 0;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.Transparent;
+            panel1.Controls.Add(btnProfile);
+            panel1.Controls.Add(btnNotifications);
+            panel1.Controls.Add(btnCommunity);
+            panel1.Controls.Add(btnIndex);
+            panel1.Location = new Point(12, 1);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(527, 55);
+            panel1.TabIndex = 8;
+            // 
+            // btnProfile
+            // 
+            btnProfile.Font = new Font("Segoe UI", 11F);
+            btnProfile.Location = new Point(399, 0);
+            btnProfile.Name = "btnProfile";
+            btnProfile.Size = new Size(126, 52);
+            btnProfile.TabIndex = 3;
+            btnProfile.Text = "Hồ Sơ";
+            btnProfile.UseVisualStyleBackColor = true;
+            // 
+            // btnNotifications
+            // 
+            btnNotifications.Font = new Font("Segoe UI", 11F);
+            btnNotifications.Location = new Point(267, 0);
+            btnNotifications.Name = "btnNotifications";
+            btnNotifications.Size = new Size(126, 52);
+            btnNotifications.TabIndex = 2;
+            btnNotifications.Text = "Thông Báo";
+            btnNotifications.UseVisualStyleBackColor = true;
+            btnNotifications.Click += btnNotifications_Click;
+            // 
+            // btnCommunity
+            // 
+            btnCommunity.Font = new Font("Segoe UI", 11F);
+            btnCommunity.Location = new Point(135, 0);
+            btnCommunity.Name = "btnCommunity";
+            btnCommunity.Size = new Size(126, 52);
+            btnCommunity.TabIndex = 1;
+            btnCommunity.Text = "Kết Nối";
+            btnCommunity.UseVisualStyleBackColor = true;
+            btnCommunity.Click += btnCommunity_Click;
+            // 
+            // btnIndex
+            // 
+            btnIndex.Font = new Font("Segoe UI", 11F);
+            btnIndex.Location = new Point(3, 0);
+            btnIndex.Name = "btnIndex";
+            btnIndex.Size = new Size(126, 52);
+            btnIndex.TabIndex = 0;
+            btnIndex.Text = "Trang Chủ";
+            btnIndex.UseVisualStyleBackColor = true;
+            btnIndex.Click += btnIndex_Click;
+            // 
+            // panelNotifications
+            // 
+            panelNotifications.AutoScroll = true;
+            panelNotifications.BackColor = Color.White;
+            panelNotifications.Location = new Point(12, 62);
+            panelNotifications.Name = "panelNotifications";
+            panelNotifications.Size = new Size(1238, 776);
+            panelNotifications.TabIndex = 9;
+            // 
             // ClientIndex
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Salmon;
             ClientSize = new Size(1262, 853);
+            Controls.Add(panelNotifications);
+            Controls.Add(panel1);
             Controls.Add(panelFr);
             Controls.Add(panelIndex);
-            Controls.Add(buttonFr);
-            Controls.Add(buttonIndex);
             Name = "ClientIndex";
             Text = "ClientIndex";
             Load += ClientIndex_Load;
@@ -183,13 +233,11 @@
             panelIndex.PerformLayout();
             panelFr.ResumeLayout(false);
             panelFr.PerformLayout();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Button buttonIndex;
-        private Button buttonFr;
         private Panel panelIndex;
         private Label label2;
         private Label label1;
@@ -200,5 +248,11 @@
         private Label label3;
         private Panel panelKNN;
         private Panel panelOnl;
+        private Panel panel1;
+        private Button btnProfile;
+        private Button btnNotifications;
+        private Button btnCommunity;
+        private Button btnIndex;
+        private Panel panelNotifications;
     }
 }

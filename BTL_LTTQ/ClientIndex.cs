@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Drawing.Drawing2D;
+using MaterialSkin.Controls;
 
 
 namespace Client
@@ -28,8 +29,8 @@ namespace Client
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             panelFr.Visible = false;
+            panelNotifications.Visible = false;
             MyID = id;
-
         }
 
         private void ClientIndex_Load(object sender, EventArgs e)
@@ -37,20 +38,8 @@ namespace Client
             LoadIndex();
             //LoadCommunityPage();
             LoadAllUser();
+            ReceiveFriendRequest();
         }
-
-        private void buttonIndex_Click(object sender, EventArgs e)
-        {
-            panelIndex.Visible = true;
-            panelFr.Visible = false;
-        }
-
-        private void buttonFr_Click(object sender, EventArgs e)
-        {
-            panelIndex.Visible = false;
-            panelFr.Visible = true;
-        }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
@@ -76,29 +65,31 @@ namespace Client
                 return;
             }
             finally { client.Close(); };
-
-            string[] listFr = Result.Split('&');
-            int lctOnl = 0;
-            int lctConv = 0;
-            for (int i = 0; i < listFr.Length - 1; i++)
+            if(Result!="NoFriend")
             {
-                string[] InfoCertain = listFr[i].Split('$');
-                //UserControlAvatar receive MyID , Friend's ID , Friend's UserName , Friend's status 
-                UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test);
-                bool sender = InfoCertain[4] == MyID;
-                bool unseen = InfoCertain[2] == "1";
-                Userconversation conversation = new Userconversation(avt, InfoCertain[3], sender, unseen);
-                conversation.Location = new Point(0, lctConv);
-                lctConv += 160;
-                panelAllFr.Controls.Add(conversation);
-                if (InfoCertain[5] == "1")
+                string[] listFr = Result.Split('&');
+                int lctOnl = 0;
+                int lctConv = 0;
+                for (int i = 0; i < listFr.Length - 1; i++)
                 {
-                    UserControlAvatar temp = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test); ;
-                    temp.Location = new Point(lctOnl, 0);
-                    lctOnl += 130;
-                    panelOnl.Controls.Add(temp);
+                    string[] InfoCertain = listFr[i].Split('$');
+                    //UserControlAvatar receive MyID , Friend's ID , Friend's UserName , Friend's status 
+                    UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test);
+                    bool sender = InfoCertain[4] == MyID;
+                    bool unseen = InfoCertain[2] == "1";
+                    Userconversation conversation = new Userconversation(avt, InfoCertain[3], sender, unseen);
+                    conversation.Location = new Point(0, lctConv);
+                    lctConv += 160;
+                    panelAllFr.Controls.Add(conversation);
+                    if (InfoCertain[5] == "1")
+                    {
+                        UserControlAvatar temp = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test); ;
+                        temp.Location = new Point(lctOnl, 0);
+                        lctOnl += 130;
+                        panelOnl.Controls.Add(temp);
+                    }
                 }
-            }
+            }                
         }
         public void LoadCommunityPage()
         {
@@ -133,10 +124,6 @@ namespace Client
             }
         }
 
-        private void panelIndex_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         private void ReceiveFriendRequest()
         {
             string Result = "";
@@ -158,6 +145,20 @@ namespace Client
                 return;
             }
             finally { client.Close(); };
+            if (Result != "NoFriendRequest")
+            {                
+                string[] FriendRequests = Result.Split(';');
+                int p_x = 20, p_y = 10;
+                foreach (string FriendRequest in FriendRequests)
+                {
+                    string[] infoCertain = FriendRequest.Split(',');
+                    UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test);
+                    community.Location = new Point(p_x, p_y);
+                    p_x += 220;
+                    if (p_x > panelNotifications.Width - 220) { p_x = 20; p_y += 330; }
+                    panelNotifications.Controls.Add(community);
+                }
+            }
         }
         private void LoadAllUser()
         {
@@ -181,14 +182,14 @@ namespace Client
             }
             finally { client.Close(); };
             string[] info = Result.Split(";");
-            int p_x = 0, p_y = 0;
+            int p_x = 20, p_y = 10;
             foreach (string s in info)
             {
                 string[] infoCertain = s.Split(",");
-                UserProfileCard community = new UserProfileCard(infoCertain[1], Properties.Resources.Test);
+                UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test);
                 community.Location = new Point(p_x, p_y);
                 p_x += 220;
-                if (p_x > panelAddFr.Width - 220) { p_x = 0; p_y += 330; }
+                if (p_x > panelAddFr.Width - 220) { p_x = 20; p_y += 330; }
                 panelAddFr.Controls.Add(community);
             }
         }
@@ -197,7 +198,7 @@ namespace Client
 
         private void ClientIndex_Paint(object sender, PaintEventArgs e)
         {
-            Color startColor = Color.Salmon ;
+            Color startColor = Color.DeepSkyBlue;
             Color endColor = Color.LightBlue;
 
             // Tạo dải màu theo chiều ngang hoặc dọc
@@ -205,6 +206,39 @@ namespace Client
             {
                 e.Graphics.FillRectangle(brush, this.ClientRectangle);
             }
+        }
+
+        private void panelAddFr_Paint(object sender, PaintEventArgs e)
+        {
+            Color startColor = Color.PowderBlue;
+            Color endColor = Color.LightBlue;
+
+            // Tạo dải màu theo chiều ngang hoặc dọc
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, startColor, endColor, LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+        }
+
+        private void btnIndex_Click(object sender, EventArgs e)
+        {
+            panelIndex.Visible = true;
+            panelFr.Visible = false;
+            panelNotifications.Visible = false;
+        }
+
+        private void btnCommunity_Click(object sender, EventArgs e)
+        {
+            panelNotifications.Visible = false;
+            panelIndex.Visible = false;
+            panelFr.Visible = true;
+        }
+
+        private void btnNotifications_Click(object sender, EventArgs e)
+        {
+            panelNotifications.Visible = true;
+            panelFr.Visible = false;
+            panelIndex.Visible = false;
         }
     }
 }

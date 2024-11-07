@@ -66,6 +66,7 @@ partial class UserProfileCard
         addFriendButton.Size = new Size(160, 36);
         addFriendButton.TabIndex = 3;
         addFriendButton.Text = "Thêm bạn bè";
+        addFriendButton.Click += addFriendButton_Click;
         // 
         // removeButton
         // 
@@ -90,6 +91,7 @@ partial class UserProfileCard
         Controls.Add(removeButton);
         Name = "UserProfileCard";
         Size = new Size(200, 320);
+        Paint += UserProfileCard_Paint;
         ((System.ComponentModel.ISupportInitialize)avatarPictureBox).EndInit();
         ResumeLayout(false);
     }
