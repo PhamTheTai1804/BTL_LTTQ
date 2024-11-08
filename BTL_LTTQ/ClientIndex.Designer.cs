@@ -2,7 +2,7 @@
 
 namespace Client
 {
-    partial class ClientIndex 
+    partial class ClientIndex
     {
         /// <summary>
         /// Required designer variable.
@@ -53,30 +53,32 @@ namespace Client
             // 
             // panelIndex
             // 
-            panelIndex.BackColor = Color.White;
+            panelIndex.BackColor = Color.Transparent;
             panelIndex.Controls.Add(panelOnl);
             panelIndex.Controls.Add(label2);
             panelIndex.Controls.Add(label1);
             panelIndex.Controls.Add(panelAllFr);
             panelIndex.Location = new Point(12, 62);
             panelIndex.Name = "panelIndex";
-            panelIndex.Size = new Size(1238, 779);
+            panelIndex.Size = new Size(1238, 858);
             panelIndex.TabIndex = 7;
             // 
             // panelOnl
             // 
+            panelOnl.BackColor = Color.White;
             panelOnl.Location = new Point(3, 65);
             panelOnl.Name = "panelOnl";
-            panelOnl.Size = new Size(1200, 170);
+            panelOnl.Size = new Size(1232, 170);
             panelOnl.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 14F);
+            label2.Font = new Font("Segoe UI", 17F);
+            label2.ForeColor = Color.White;
             label2.Location = new Point(15, 266);
             label2.Name = "label2";
-            label2.Size = new Size(183, 32);
+            label2.Size = new Size(218, 40);
             label2.TabIndex = 3;
             label2.Text = "Bạn Bè Của Bạn";
             label2.Click += label2_Click;
@@ -84,10 +86,11 @@ namespace Client
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14F);
+            label1.Font = new Font("Segoe UI", 17F);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(3, 13);
             label1.Name = "label1";
-            label1.Size = new Size(195, 32);
+            label1.Size = new Size(234, 40);
             label1.TabIndex = 2;
             label1.Text = "Đang Hoạt Động";
             // 
@@ -98,57 +101,61 @@ namespace Client
             panelAllFr.Location = new Point(3, 329);
             panelAllFr.Margin = new Padding(0, 3, 3, 3);
             panelAllFr.Name = "panelAllFr";
-            panelAllFr.Size = new Size(1137, 450);
+            panelAllFr.Size = new Size(1232, 526);
             panelAllFr.TabIndex = 1;
             // 
             // panelFr
             // 
-            panelFr.BackColor = Color.White;
+            panelFr.BackColor = Color.Transparent;
             panelFr.Controls.Add(panelAddFr);
             panelFr.Controls.Add(label4);
             panelFr.Controls.Add(label3);
             panelFr.Controls.Add(panelKNN);
             panelFr.Location = new Point(12, 62);
             panelFr.Name = "panelFr";
-            panelFr.Size = new Size(1238, 776);
+            panelFr.Size = new Size(1235, 849);
             panelFr.TabIndex = 4;
+            panelFr.Paint += panelFr_Paint;
             // 
             // panelAddFr
             // 
             panelAddFr.AutoScroll = true;
-            panelAddFr.BackColor = Color.PowderBlue;
-            panelAddFr.Location = new Point(15, 329);
+            panelAddFr.BackColor = Color.Transparent;
+            panelAddFr.Location = new Point(15, 461);
             panelAddFr.Name = "panelAddFr";
-            panelAddFr.Size = new Size(1182, 436);
+            panelAddFr.Size = new Size(1182, 388);
             panelAddFr.TabIndex = 3;
-            panelAddFr.Paint += panelAddFr_Paint;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 14F);
-            label4.Location = new Point(15, 288);
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Segoe UI", 17F);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(41, 416);
             label4.Name = "label4";
-            label4.Size = new Size(96, 32);
+            label4.Size = new Size(115, 40);
             label4.TabIndex = 2;
             label4.Text = "Kết Bạn";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 14F);
-            label3.Location = new Point(12, 24);
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Segoe UI", 17F);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(42, 7);
             label3.Name = "label3";
-            label3.Size = new Size(356, 32);
+            label3.Size = new Size(421, 40);
             label3.TabIndex = 1;
             label3.Text = "Những Người Có Thể Bạn Thích";
             // 
             // panelKNN
             // 
-            panelKNN.BackColor = Color.White;
+            panelKNN.BackColor = Color.Transparent;
             panelKNN.Location = new Point(9, 63);
             panelKNN.Name = "panelKNN";
-            panelKNN.Size = new Size(1191, 204);
+            panelKNN.Size = new Size(1191, 325);
             panelKNN.TabIndex = 0;
             // 
             // panel1
@@ -220,7 +227,7 @@ namespace Client
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Salmon;
-            ClientSize = new Size(1262, 853);
+            ClientSize = new Size(1262, 931);
             Controls.Add(panelNotifications);
             Controls.Add(panel1);
             Controls.Add(panelFr);

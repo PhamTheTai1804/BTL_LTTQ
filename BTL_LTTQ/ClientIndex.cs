@@ -65,7 +65,7 @@ namespace Client
                 return;
             }
             finally { client.Close(); };
-            if(Result!="NoFriend")
+            if (Result != "NoFriend")
             {
                 string[] listFr = Result.Split('&');
                 int lctOnl = 0;
@@ -79,7 +79,7 @@ namespace Client
                     bool unseen = InfoCertain[2] == "1";
                     Userconversation conversation = new Userconversation(avt, InfoCertain[3], sender, unseen);
                     conversation.Location = new Point(0, lctConv);
-                    lctConv += 160;
+                    lctConv += 125;
                     panelAllFr.Controls.Add(conversation);
                     if (InfoCertain[5] == "1")
                     {
@@ -89,7 +89,7 @@ namespace Client
                         panelOnl.Controls.Add(temp);
                     }
                 }
-            }                
+            }
         }
         public void LoadCommunityPage()
         {
@@ -146,16 +146,16 @@ namespace Client
             }
             finally { client.Close(); };
             if (Result != "NoFriendRequest")
-            {                
+            {
                 string[] FriendRequests = Result.Split(';');
-                int p_x = 20, p_y = 10;
+                int p_x = 25, p_y = 10;
                 foreach (string FriendRequest in FriendRequests)
                 {
                     string[] infoCertain = FriendRequest.Split(',');
-                    UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test);
+                    UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test, true);
                     community.Location = new Point(p_x, p_y);
                     p_x += 220;
-                    if (p_x > panelNotifications.Width - 220) { p_x = 20; p_y += 330; }
+                    if (p_x > panelNotifications.Width - 220) { p_x = 25; p_y += 330; }
                     panelNotifications.Controls.Add(community);
                 }
             }
@@ -182,14 +182,14 @@ namespace Client
             }
             finally { client.Close(); };
             string[] info = Result.Split(";");
-            int p_x = 20, p_y = 10;
+            int p_x = 28, p_y = 10;
             foreach (string s in info)
             {
                 string[] infoCertain = s.Split(",");
-                UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test);
+                UserProfileCard community = new UserProfileCard(MyID, infoCertain[0], infoCertain[1], Properties.Resources.Test, false);
                 community.Location = new Point(p_x, p_y);
                 p_x += 220;
-                if (p_x > panelAddFr.Width - 220) { p_x = 20; p_y += 330; }
+                if (p_x > panelAddFr.Width - 220) { p_x = 28; p_y += 330; }
                 panelAddFr.Controls.Add(community);
             }
         }
@@ -198,20 +198,8 @@ namespace Client
 
         private void ClientIndex_Paint(object sender, PaintEventArgs e)
         {
-            Color startColor = Color.DeepSkyBlue;
-            Color endColor = Color.LightBlue;
-
-            // Tạo dải màu theo chiều ngang hoặc dọc
-            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, startColor, endColor, LinearGradientMode.Horizontal))
-            {
-                e.Graphics.FillRectangle(brush, this.ClientRectangle);
-            }
-        }
-
-        private void panelAddFr_Paint(object sender, PaintEventArgs e)
-        {
-            Color startColor = Color.PowderBlue;
-            Color endColor = Color.LightBlue;
+            Color startColor = Color.LightBlue;
+            Color endColor = Color.DeepSkyBlue;
 
             // Tạo dải màu theo chiều ngang hoặc dọc
             using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, startColor, endColor, LinearGradientMode.Horizontal))
@@ -240,6 +228,65 @@ namespace Client
             panelFr.Visible = false;
             panelIndex.Visible = false;
         }
+
+        private void panelFr_Paint(object sender, PaintEventArgs e)
+        {
+            Color startColor = Color.LightBlue;
+            Color endColor = Color.DeepSkyBlue;
+
+            // Tạo dải màu theo chiều ngang hoặc dọc
+            using (LinearGradientBrush brush = new LinearGradientBrush(this.ClientRectangle, startColor, endColor, LinearGradientMode.Horizontal))
+            {
+                e.Graphics.FillRectangle(brush, this.ClientRectangle);
+            }
+            Graphics g = e.Graphics;
+            Pen pen = new Pen(Color.White, 2); // Định dạng màu sắc và độ dày của đường thẳng
+            g.DrawLine(pen, 449, 39, 1120, 39); // Vẽ đường thẳng từ (0, 50) đến (Width của form, 50)
+            g.DrawLine(pen, 142, 448, 1120, 448); // Vẽ đường thẳng từ (0, 50) đến (Width của form, 50)
+            pen.Dispose();
+        }
+
+        private void panelAllFr_Paint(object sender, PaintEventArgs e)
+        {
+            Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+            int cornerRadius = 20; // Độ bo góc
+
+            using (GraphicsPath path = new GraphicsPath())
+            {
+                path.AddArc(rect.X, rect.Y, cornerRadius, cornerRadius, 180, 90);
+                path.AddArc(rect.X + rect.Width - cornerRadius, rect.Y, cornerRadius, cornerRadius, 270, 90);
+                path.AddRectangle(new Rectangle(rect.X, rect.Y + cornerRadius / 2, rect.Width, rect.Height - cornerRadius / 2));
+
+                this.Region = new Region(path);
+            }
+        }
+
+        private void panelOnl_Paint(object sender, PaintEventArgs e)
+        {
+            int cornerRadius = 30; // Độ bo tròn góc
+
+            // Tạo GraphicsPath với các góc bo tròn
+            GraphicsPath path = new GraphicsPath();
+            path.StartFigure();
+            path.AddArc(new Rectangle(0, 0, cornerRadius * 2, cornerRadius * 2), 180, 90); // Góc trái trên
+            path.AddLine(cornerRadius, 0, this.Width - cornerRadius, 0);
+            path.AddArc(new Rectangle(this.Width - cornerRadius * 2, 0, cornerRadius * 2, cornerRadius * 2), 270, 90); // Góc phải trên
+            path.AddLine(this.Width, cornerRadius, this.Width, this.Height - cornerRadius);
+            path.AddArc(new Rectangle(this.Width - cornerRadius * 2, this.Height - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2), 0, 90); // Góc phải dưới
+            path.AddLine(this.Width - cornerRadius, this.Height, cornerRadius, this.Height);
+            path.AddArc(new Rectangle(0, this.Height - cornerRadius * 2, cornerRadius * 2, cornerRadius * 2), 90, 90); // Góc trái dưới
+            path.CloseFigure();
+
+            // Gán path này cho thuộc tính Region của Form để tạo hiệu ứng bo góc
+            this.Region = new Region(path);
+
+            // Thiết lập Paint event để làm mịn đường cong
+            this.Paint += (s, pe) =>
+            {
+                pe.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                pe.Graphics.DrawPath(new Pen(this.BackColor, 2), path); // Đường viền mịn hơn
+            };
+    }
     }
 }
 

@@ -55,10 +55,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             Controls.Add(labelMessage);
             Controls.Add(labelName);
             Name = "Userconversation";
-            Size = new Size(1000, 150);
+            Size = new Size(1232, 120);
+            Load += Userconversation_Load;
             Click += Userconversation_Click;
             ResumeLayout(false);
             PerformLayout();

@@ -10,7 +10,7 @@ public partial class UserProfileCard : UserControl
 {
     private string MyID;
     private string OwnerCardId;
-    public UserProfileCard(string myid,string uid,string username, Image avt)
+    public UserProfileCard(string myid,string uid,string username, Image avt,bool IsReceive)
     {
         InitializeComponent();
         this.Avatar = avt;
@@ -21,7 +21,11 @@ public partial class UserProfileCard : UserControl
         // Cấu hình các thành phần
         usernameLabel.TextAlign = ContentAlignment.MiddleCenter;
 
-        addFriendButton.Text = "Thêm bạn bè";
+        if (!IsReceive) addFriendButton.Text = "Thêm bạn bè";
+        else
+        {
+            addFriendButton.Text = "Chấp nhận";
+        }
         MyID = myid;
         OwnerCardId = uid;
         // Gọi phương thức để bo góc ảnh
@@ -60,23 +64,31 @@ public partial class UserProfileCard : UserControl
 
     private void addFriendButton_Click(object sender, EventArgs e)
     {
-        IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
-        Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-        try
+        if (addFriendButton.Text == "Chấp nhận")
         {
-            client.Connect(IP);
-            string RequestLogin = "#FrReq"+MyID+OwnerCardId ;
-            byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
-            client.Send(data);           
+            //xu ly logic tai day
         }
-        catch
+        else
         {
-            MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return;
+            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            try
+            {
+                client.Connect(IP);
+                string RequestLogin = "#FrReq" + MyID + OwnerCardId;
+                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                client.Send(data);
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            finally { client.Close(); };
+            addFriendButton.Text = "Đã gửi lời mời";
+            addFriendButton.Enabled = false;
         }
-        finally { client.Close(); };
-        addFriendButton.Text = "Đã gửi lời mời";
-        addFriendButton.Enabled = false;
+           
     }
 
     // Thuộc tính công khai để thiết lập tên người dùng
