@@ -219,7 +219,7 @@ namespace Client
             panelNotifications.BackColor = Color.White;
             panelNotifications.Location = new Point(12, 62);
             panelNotifications.Name = "panelNotifications";
-            panelNotifications.Size = new Size(1238, 776);
+            panelNotifications.Size = new Size(1238, 858);
             panelNotifications.TabIndex = 9;
             // 
             // ClientIndex

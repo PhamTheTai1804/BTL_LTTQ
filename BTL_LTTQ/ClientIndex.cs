@@ -14,12 +14,13 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Drawing.Drawing2D;
 using MaterialSkin.Controls;
+using Client.Classes;
 
 
 namespace Client
 {
     public partial class ClientIndex : Form
-    {
+    {       
         private string MyID;
         public ClientIndex(string id)
         {
@@ -37,8 +38,8 @@ namespace Client
         {
             LoadIndex();
             //LoadCommunityPage();
-            LoadAllUser();
-            ReceiveFriendRequest();
+            //LoadAllUser();
+            //ReceiveFriendRequest();
         }
         private void label2_Click(object sender, EventArgs e)
         {
@@ -46,34 +47,40 @@ namespace Client
         }
         public void LoadIndex()
         {
-            string Result = "";
-            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
-            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            try
+            string key = "#LoadF"+MyID;
+            string result = GlobalCache.SharedCache.GetOrAdd(key, () =>
             {
-                client.Connect(IP);
-                string RequestLogin = "#LoadF" + MyID;
-                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
-                client.Send(data);
-                byte[] dataReturn = new byte[1024 * 5000];
-                int bytesRead = client.Receive(dataReturn);
-                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
-            }
-            catch
+                string serverResponse = "";
+                IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+                Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+
+                try
+                {
+                    client.Connect(IP);
+                    string requestLogin = "#LoadF" + MyID;
+                    byte[] data = Encoding.UTF8.GetBytes(requestLogin);
+                    client.Send(data);
+                    byte[] dataReturn = new byte[1024 * 5000];
+                    int bytesRead = client.Receive(dataReturn);
+                    serverResponse = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+                }
+                catch
+                {
+                    MessageBox.Show("Can't connect to server!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally { client.Close(); }
+
+                return serverResponse;
+            });
+            if (result != "NoFriend")
             {
-                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            finally { client.Close(); };
-            if (Result != "NoFriend")
-            {
-                string[] listFr = Result.Split('&');
+                string[] listFr = result.Split('&');
                 int lctOnl = 0;
                 int lctConv = 0;
                 for (int i = 0; i < listFr.Length - 1; i++)
                 {
                     string[] InfoCertain = listFr[i].Split('$');
-                    //UserControlAvatar receive MyID , Friend's ID , Friend's UserName , Friend's status 
+                    //UserControlAvatar receive MyID , Friend's ID , Friend's UserName , Friend's status ,Image
                     UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], InfoCertain[2], Properties.Resources.Test);
                     bool sender = InfoCertain[4] == MyID;
                     bool unseen = InfoCertain[2] == "1";
@@ -93,58 +100,68 @@ namespace Client
         }
         public void LoadCommunityPage()
         {
-            string Result = "";
-            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
-            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            try
+            panelKNN.Controls.Clear();
+            string key = "#APIAI" + MyID;
+            string Result = GlobalCache.SharedCache.GetOrAdd(key, () =>
             {
-                client.Connect(IP);
-                string RequestLogin = "#APIAI" + MyID;
-                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
-                client.Send(data);
-                byte[] dataReturn = new byte[1024 * 5000];
-                int bytesRead = client.Receive(dataReturn);
-                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
-            }
-            catch
-            {
-                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            finally { client.Close(); };
+                string serverResponce = "";
+                IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+                Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                try
+                {
+                    client.Connect(IP);
+                    string RequestLogin = "#APIAI" + MyID;
+                    byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                    client.Send(data);
+                    byte[] dataReturn = new byte[1024 * 5000];
+                    int bytesRead = client.Receive(dataReturn);
+                    serverResponce = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+                }
+                catch
+                {
+                    MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally { client.Close(); };
+                return serverResponce;
+            });
             string[] RcmFriends = Result.Split(';');
-            int lct = 0;
+            int lct = 28;
             foreach (string item in RcmFriends)
             {
                 string[] InfoCertain = item.Split(',');
-                UserControlAvatar avt = new UserControlAvatar(MyID, InfoCertain[0], InfoCertain[1], "0", Properties.Resources.Test);
-                avt.Location = new Point(lct, 0);
-                lct += 130;
-                panelKNN.Controls.Add(avt);
+                UserProfileCard community = new UserProfileCard(MyID, InfoCertain[0], InfoCertain[1], Properties.Resources.Test, false);
+                community.Location = new Point(lct, 0);
+                lct += 220;
+                panelKNN.Controls.Add(community);
             }
         }
 
         private void ReceiveFriendRequest()
         {
-            string Result = "";
-            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
-            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            try
+            panelNotifications.Controls.Clear();
+            string key= "#RcvFr" + MyID;
+            string Result = GlobalCache.SharedCache.GetOrAdd(key, () =>
             {
-                client.Connect(IP);
-                string RequestLogin = "#RcvFr" + MyID;
-                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
-                client.Send(data);
-                byte[] dataReturn = new byte[1024 * 5000];
-                int bytesRead = client.Receive(dataReturn);
-                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
-            }
-            catch
-            {
-                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            finally { client.Close(); };
+                string serverresponce = "";
+                IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+                Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                try
+                {
+                    client.Connect(IP);
+                    string RequestLogin = "#RcvFr" + MyID;
+                    byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                    client.Send(data);
+                    byte[] dataReturn = new byte[1024 * 5000];
+                    int bytesRead = client.Receive(dataReturn);
+                    serverresponce = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+                }
+                catch
+                {
+                    MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally { client.Close(); };
+                return serverresponce;
+            });
             if (Result != "NoFriendRequest")
             {
                 string[] FriendRequests = Result.Split(';');
@@ -162,25 +179,31 @@ namespace Client
         }
         private void LoadAllUser()
         {
-            string Result = "";
-            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
-            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
-            try
+            panelAddFr.Controls.Clear();
+            string key= "#LdAll" + MyID;
+            string Result = GlobalCache.SharedCache.GetOrAdd(key, () =>
             {
-                client.Connect(IP);
-                string RequestLogin = "#LdAll" + MyID;
-                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
-                client.Send(data);
-                byte[] dataReturn = new byte[1024 * 5000];
-                int bytesRead = client.Receive(dataReturn);
-                Result = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
-            }
-            catch
-            {
-                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            finally { client.Close(); };
+                string serverResponce = "";
+                IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+                Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+                try
+                {
+                    client.Connect(IP);
+                    string RequestLogin = "#LdAll" + MyID;
+                    byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                    client.Send(data);
+                    byte[] dataReturn = new byte[1024 * 5000];
+                    int bytesRead = client.Receive(dataReturn);
+                    serverResponce = Encoding.UTF8.GetString(dataReturn, 0, bytesRead);
+                }
+                catch
+                {
+                    MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                }
+                finally { client.Close(); };
+                return serverResponce;
+            });
             string[] info = Result.Split(";");
             int p_x = 28, p_y = 10;
             foreach (string s in info)
@@ -210,6 +233,7 @@ namespace Client
 
         private void btnIndex_Click(object sender, EventArgs e)
         {
+            LoadIndex();
             panelIndex.Visible = true;
             panelFr.Visible = false;
             panelNotifications.Visible = false;
@@ -217,6 +241,8 @@ namespace Client
 
         private void btnCommunity_Click(object sender, EventArgs e)
         {
+            LoadAllUser();
+            //LoadCommunityPage();
             panelNotifications.Visible = false;
             panelIndex.Visible = false;
             panelFr.Visible = true;
@@ -224,6 +250,7 @@ namespace Client
 
         private void btnNotifications_Click(object sender, EventArgs e)
         {
+            ReceiveFriendRequest();
             panelNotifications.Visible = true;
             panelFr.Visible = false;
             panelIndex.Visible = false;

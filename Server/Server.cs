@@ -170,6 +170,10 @@ namespace Server
                         byte[] FrRequests = Encoding.UTF8.GetBytes(result);
                         client.Send(FrRequests);
                     }
+                    else if(message.Substring(0,6)=="#AcpRq")
+                    {
+                        AcceptFriendRequest(message.Substring (6,3),message.Substring(9));
+                    }    
                     else
                     {
                         string IDSend = message.Substring(6, 3);
@@ -439,6 +443,31 @@ namespace Server
                 command.Parameters.AddWithValue("@mid", myID);
                 command.Parameters.AddWithValue("@uid", uID);
 
+                db.OpenConnect();
+                int rowsAffected = command.ExecuteNonQuery();
+                db.CloseConnect();
+            }
+        }
+        private void AcceptFriendRequest(string myID, string uID)
+        {
+            string sqlQuery = "  INSERT INTO [dbo].[BanBe]([MaNguoiDung],[MaBanBe],[TrangThai])\r\n  VALUES(@mid,@uid,0)";
+            using (SqlCommand command = new SqlCommand(sqlQuery, db.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@mid", myID);
+                command.Parameters.AddWithValue("@uid", uID);
+                db.OpenConnect();
+                int rowsAffected = command.ExecuteNonQuery();
+                db.CloseConnect();
+            }
+            DeleteFrRequest(myID, uID);
+        }
+        private void DeleteFrRequest(string myID, string uID)
+        {
+            string query = "DELETE FROM [dbo].[LoiMoiKetBan]\r\n  WHERE ([MaNguoiGui] = @uid AND [MaNguoiNhan] = @mid) OR ([MaNguoiGui] = @mid AND [MaNguoiNhan]=@uid)";
+            using (SqlCommand command = new SqlCommand(query, db.GetConnection()))
+            {
+                command.Parameters.AddWithValue("@mid", myID);
+                command.Parameters.AddWithValue("@uid", uID);
                 db.OpenConnect();
                 int rowsAffected = command.ExecuteNonQuery();
                 db.CloseConnect();

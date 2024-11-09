@@ -5,6 +5,7 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using MaterialSkin.Controls;
+using Client.Classes;
 namespace Client;
 public partial class UserProfileCard : UserControl
 {
@@ -66,7 +67,28 @@ public partial class UserProfileCard : UserControl
     {
         if (addFriendButton.Text == "Chấp nhận")
         {
-            //xu ly logic tai day
+            string Result = "";
+            IPEndPoint IP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 9998);
+            Socket client = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.IP);
+            try
+            {
+                client.Connect(IP);
+                string RequestLogin = "#AcpRq" + MyID + OwnerCardId;
+                byte[] data = Encoding.UTF8.GetBytes(RequestLogin);
+                client.Send(data);
+            }
+            catch
+            {
+                MessageBox.Show("Can't connect to server !", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            finally { client.Close(); };
+            addFriendButton.Text = "Đã chấp nhận";
+            addFriendButton.Enabled = false;
+            GlobalCache.SharedCache.Invalidate("#LoadF" + MyID);
+            GlobalCache.SharedCache.Invalidate("#APIAI" + MyID);
+            GlobalCache.SharedCache.Invalidate("#LdAll" + MyID);
+            GlobalCache.SharedCache.Invalidate("#RcvFr" + MyID);
         }
         else
         {
