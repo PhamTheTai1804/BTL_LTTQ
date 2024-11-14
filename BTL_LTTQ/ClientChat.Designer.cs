@@ -34,6 +34,7 @@ namespace BTL_LTTQ
             ContainerChat = new Panel();
             textBoxChat = new TextBox();
             buttonSend = new Button();
+            btnGameRPS = new Button();
             SuspendLayout();
             // 
             // ContainerChat
@@ -41,7 +42,7 @@ namespace BTL_LTTQ
             ContainerChat.AutoScroll = true;
             ContainerChat.Location = new Point(31, 27);
             ContainerChat.Name = "ContainerChat";
-            ContainerChat.Size = new Size(1200, 705);
+            ContainerChat.Size = new Size(1200, 655);
             ContainerChat.TabIndex = 0;
             // 
             // textBoxChat
@@ -66,11 +67,22 @@ namespace BTL_LTTQ
             buttonSend.UseVisualStyleBackColor = false;
             buttonSend.Click += buttonSend_Click;
             // 
+            // btnGameRPS
+            // 
+            btnGameRPS.Location = new Point(31, 688);
+            btnGameRPS.Name = "btnGameRPS";
+            btnGameRPS.Size = new Size(169, 54);
+            btnGameRPS.TabIndex = 3;
+            btnGameRPS.Text = "Rock Paper Scissors";
+            btnGameRPS.UseVisualStyleBackColor = true;
+            btnGameRPS.Click += btnGameRPS_Click;
+            // 
             // ClientChat
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1274, 867);
+            Controls.Add(btnGameRPS);
             Controls.Add(buttonSend);
             Controls.Add(textBoxChat);
             Controls.Add(ContainerChat);
@@ -84,5 +96,6 @@ namespace BTL_LTTQ
         private Panel ContainerChat;
         private TextBox textBoxChat;
         private Button buttonSend;
+        private Button btnGameRPS;
     }
 }
